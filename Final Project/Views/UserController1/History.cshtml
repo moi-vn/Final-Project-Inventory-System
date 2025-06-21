@@ -1,0 +1,71 @@
+﻿@model List<Final_Project.Models.ItemHistory>
+
+@{
+    ViewData["Title"] = "History";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: url('https://images.hdqwalls.com/download/minimal-landscape-4k-ro-1366x768.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #fff;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .history-container {
+        padding: 60px 20px;
+    }
+
+    h2 {
+        margin-bottom: 40px;
+        font-weight: 700;
+        text-shadow: 1px 1px 4px #000;
+    }
+
+    .card-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .alert {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border: none;
+    }
+</style>
+
+<div class="container history-container">
+    <h2 class="text-center"> Recent Inventory History</h2>
+
+    @if (Model.Any())
+    {
+        <div class="row justify-content-center">
+            @foreach (var entry in Model)
+            {
+                <div class="col-md-8">
+                    <div class="glass-card shadow-lg">
+                        <h4>@entry.Action - @entry.ItemName</h4>
+                        <p class="card-subtitle text-light mb-2">@entry.ActionDate.ToString("f")</p>
+                        <p class="card-text"><em>@entry.Description</em></p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">No history available.</div>
+    }
+</div>
