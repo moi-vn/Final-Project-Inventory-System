@@ -49,6 +49,7 @@
 <div class="container history-container">
     <h2 class="text-center"> Recent Inventory History</h2>
 
+    <!-- If there are history entries, loop through and display them -->
     @if (Model.Any())
     {
         <div class="row justify-content-center">
@@ -66,6 +67,7 @@
     }
     else
     {
+        <!-- Show message if no history is available -->
         <div class="alert alert-info text-center">No history available.</div>
     }
 </div>
